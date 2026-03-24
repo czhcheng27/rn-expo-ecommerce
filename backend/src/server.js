@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { ENV } from "./config/env.js";
+import { connectDB } from "./config/db.js";
 
 const app = express();
 
@@ -41,4 +42,5 @@ const PORT = Number(ENV.PORT) || 3001;
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is up and running on port ${PORT}`);
+  connectDB();
 });
