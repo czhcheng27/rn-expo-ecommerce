@@ -43,7 +43,12 @@ app.get("/api/health", (_req, res) => {
 
 const PORT = Number(ENV.PORT) || 3001;
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server is up and running on port ${PORT}`);
-  connectDB();
-});
+
+const startServer = async () => {
+  await connectDB();
+  app.listen(ENV.PORT, () => {
+    console.log("Server is up and running");
+  });
+};
+
+startServer();
